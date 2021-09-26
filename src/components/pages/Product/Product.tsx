@@ -1,7 +1,7 @@
 /*
  * Copyright (c) ADeepTech
  * Licensed under the MIT license
- * https://github.com/ADeepTech/Full-Stack-pre-assessment/blob/master/LICENSE
+ * https://github.com/ADeepTech/React-Redux-Typescript/blob/main/LICENSE
  * @author AndyNgKM
  */
 import React from "react"
@@ -10,22 +10,13 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap"
 import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
 import { getCards } from "../../../store/selectors/appSelectors"
-import { setCardNumber } from "../../../store/actions/app"
-import { BoardResult } from "./Panel/BoardResult"
-import { Ticket } from "./Panel/Ticket"
+import BoardResult from "./Panel/BoardResult"
+import Ticket from "./Panel/Ticket"
+import { CARD_TYPES } from "./Panel/ItemTypes"
 
 const Product: React.FC = () => {
     const dispatch = useDispatch()
     const cards = useSelector(getCards)
-
-    const updateCardNumber = (cardType: string) => {
-        dispatch(
-            setCardNumber({
-                cardType: cardType,
-                number: 2
-            })
-        )
-    }
 
     return (
         <Container>
@@ -38,9 +29,9 @@ const Product: React.FC = () => {
                                 <Button style={{ alignItems: "flex-end" }}>Buy</Button>
                             </Card.Header>
                             <Card.Body>
-                                <Ticket name="SILVER" />
-                                <Ticket name="GOLD" />
-                                <Ticket name="DIAMOND" />
+                                {CARD_TYPES.map((val, index) => {
+                                    return <Ticket key={index} name={val} numberOfTickets={cards[val] ? cards[val].number : 0} />
+                                })}
                             </Card.Body>
                         </Card>
                     </Col>

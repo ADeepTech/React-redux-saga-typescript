@@ -1,9 +1,11 @@
 import { CSSProperties, FC } from "react"
+import { useDispatch } from "react-redux"
 import { useDrag } from "react-dnd"
+import { setCardNumber } from "../../../../store/actions/app"
 import { ItemTypes } from "./ItemTypes"
 
 const style: CSSProperties = {
-    width: '100%',
+    width: "100%",
     border: "1px dashed gray",
     backgroundColor: "white",
     padding: "0.5rem 1rem",
@@ -15,20 +17,32 @@ const style: CSSProperties = {
 
 export interface TicketProps {
     name: string
+    numberOfTickets: number
 }
 
 interface DropResult {
     name: string
 }
 
-export const Ticket: FC<TicketProps> = function Ticket({ name }) {
+const Ticket: FC<TicketProps> = function Ticket({ name, numberOfTickets }: TicketProps) {
+    const dispatch = useDispatch()
+
+    const updateCardNumber = (cardType: string) => {
+        dispatch(
+            setCardNumber({
+                cardType: cardType,
+                number: 2,
+            })
+        )
+    }
+
     const [{ isDragging }, drag] = useDrag(() => ({
         type: ItemTypes.TICKET,
         item: { name },
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult<DropResult>()
             if (item && dropResult) {
-                alert(`You dropped ${item.name} into ${dropResult.name}!`)
+                updateCardNumber(item.name)
             }
         },
         collect: (monitor) => ({
@@ -40,7 +54,8 @@ export const Ticket: FC<TicketProps> = function Ticket({ name }) {
     const opacity = isDragging ? 0.4 : 1
     return (
         <div ref={drag} role="Ticket" style={{ ...style, opacity }} data-testid={`Ticket-${name}`}>
-            {name}
+            {name} - {numberOfTickets}
         </div>
     )
 }
+export default Ticket
