@@ -5,7 +5,7 @@
  * @author AndyNgKM
  */
 import React from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { Container, Row, Col, Card, Button } from "react-bootstrap"
 import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
@@ -15,7 +15,6 @@ import Ticket from "./Panel/Ticket"
 import { CARD_TYPES } from "./Panel/ItemTypes"
 
 const Product: React.FC = () => {
-    const dispatch = useDispatch()
     const cards = useSelector(getCards)
 
     return (
@@ -30,7 +29,13 @@ const Product: React.FC = () => {
                             </Card.Header>
                             <Card.Body>
                                 {CARD_TYPES.map((val, index) => {
-                                    return <Ticket key={index} name={val} numberOfTickets={cards[val] ? cards[val].number : 0} />
+                                    return (
+                                        <Ticket
+                                            key={index}
+                                            name={val}
+                                            numberOfTickets={cards[val] ? cards[val].number : 0}
+                                        />
+                                    )
                                 })}
                             </Card.Body>
                         </Card>

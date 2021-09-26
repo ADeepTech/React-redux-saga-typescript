@@ -7,4 +7,4 @@ export const selectPortingProjects = (state: RootState) => state.app.portingProj
 
 export const getCards = (state: RootState) => state.app.cards
 
-export const selectDashboardTableData = createSelector(getCards, (cards) => cards)
+export const selectCardsData = createSelector(getCards, (cards) => cards)

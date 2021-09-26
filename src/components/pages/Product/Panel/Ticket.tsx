@@ -28,10 +28,13 @@ const Ticket: FC<TicketProps> = function Ticket({ name, numberOfTickets }: Ticke
     const dispatch = useDispatch()
 
     const updateCardNumber = (cardType: string) => {
+        if (typeof numberOfTickets === undefined) {
+            numberOfTickets = 0
+        }
         dispatch(
             setCardNumber({
                 cardType: cardType,
-                number: 2,
+                number: --numberOfTickets,
             })
         )
     }
