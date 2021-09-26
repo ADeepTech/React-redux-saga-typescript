@@ -7,7 +7,11 @@
 3. Typescript - Lint
 4. Craco - Build
 5. Bootstrap - Web design
+<<<<<<< Updated upstream
 
+=======
+            
+>>>>>>> Stashed changes
 ## Usage
 
 ```
