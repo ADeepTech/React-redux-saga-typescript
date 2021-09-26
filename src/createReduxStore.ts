@@ -3,17 +3,17 @@ import { applyMiddleware, createStore, Middleware } from "redux"
 import { createLogger } from "redux-logger"
 import createSagaMiddleware from "redux-saga"
 
-import { RootAction as RA } from "./store/actions";
+import { RootAction as RA } from "./store/actions"
 import { createRootReducer, RootState as RS } from "./store/reducers"
 import createRootSaga from "./store/sagas"
 
 declare module "typesafe-actions" {
-  export type RootAction = RA;
-  export type RootState = RS;
-  interface Types {
-    RootAction: RootAction;
-    RootState: RootState;
-  }
+    export type RootAction = RA
+    export type RootState = RS
+    interface Types {
+        RootAction: RootAction
+        RootState: RootState
+    }
 }
 
 const logger = createLogger({

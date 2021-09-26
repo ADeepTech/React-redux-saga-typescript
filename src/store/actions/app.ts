@@ -17,11 +17,13 @@ export interface SetPortingProjectConfig {
 }
 export const setPortingProjectConfig = createAction("setPortingProjectConfig")<SetPortingProjectConfig>()
 
-export interface SetCardNumber {
+export interface SetCardNumberPayload {
     cardType: string
     number: number
 }
-export const setCardNumber = createAction("SetCardNumber")<SetCardNumber>()
+export const setCardNumber = createAction("setCardNumber")<SetCardNumberPayload>()
+
+export const setCardNumberSuccess = createAction("setCardNumberSuccess")<SetCardNumberPayload>()
 
 export const removePortedSolution = createAction("removePortedSolution")<string>()
 

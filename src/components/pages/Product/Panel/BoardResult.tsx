@@ -15,7 +15,7 @@ const style: CSSProperties = {
     float: "left",
 }
 
-export const BoardResult: FC = () => {
+const BoardResult: FC = () => {
     const [{ canDrop, isOver }, drop] = useDrop(() => ({
         accept: ItemTypes.TICKET,
         drop: () => ({ name: "BoardResult" }),
@@ -39,3 +39,4 @@ export const BoardResult: FC = () => {
         </div>
     )
 }
+export default BoardResult
