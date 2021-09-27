@@ -5,7 +5,6 @@
  * @author AndyNgKM
  */
 import React from "react"
-import * as fakestoreapi from "./fakestoreapi"
 
 export interface PagesConfigProps {
     name: string
@@ -26,16 +25,6 @@ export interface ShellProps {
     defaultSelectedKeys?: string
     isMobile?: boolean
     priority?: boolean
-}
-
-export interface ProductListProps {
-    productList: fakestoreapi.ProductProps[]
-}
-
-export interface GoToCartPanelProps {
-    open: boolean
-    setOpen: ((value: boolean) => void)
-    product: fakestoreapi.ProductProps
 }
 
 export interface QuantityDropdownProps {
