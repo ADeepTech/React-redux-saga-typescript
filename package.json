@@ -1,6 +1,6 @@
 {
-  "name": "web",
-  "version": "0.1.0",
+  "name": "react-redux-saga-typescript",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "start": "webpack serve",
@@ -53,6 +53,7 @@
     "babel-loader": "^8.1.0",
     "css-loader": "^5.1.1",
     "css-modules-typescript-loader": "^4.0.1",
+    "cross-env": "^7.0.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.2.0",
     "husky": "^7.0.2",
@@ -64,7 +65,8 @@
     "typescript": "^4.1.2",
     "webpack": "^5.24.2",
     "webpack-cli": "^4.5.0",
-    "webpack-dev-server": "^4.3.0"
+    "webpack-dev-server": "^4.3.0",
+    "webpack-merge": "^5.8.0"
   },
   "eslintConfig": {
     "extends": [
